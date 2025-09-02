@@ -8,7 +8,7 @@ interface Profile {
   nome: string;
   email: string;
   telefone?: string;
-  tipo_usuario: 'gestor' | 'admin';
+  tipo_usuario: 'cliente' | 'gestor' | 'admin';
   foto_perfil?: string;
   created_at: string;
   updated_at: string;
@@ -65,7 +65,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           // Fetch profile data after auth state change
           setTimeout(async () => {
             const profileData = await fetchProfile(session.user.id);
-            setProfile(profileData);
+            setProfile(profileData as Profile);
             setLoading(false);
           }, 0);
         } else {
@@ -82,7 +82,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       
       if (session?.user) {
         fetchProfile(session.user.id).then((profileData) => {
-          setProfile(profileData);
+          setProfile(profileData as Profile);
           setLoading(false);
         });
       } else {
