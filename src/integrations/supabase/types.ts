@@ -14,112 +14,6 @@ export type Database = {
   }
   public: {
     Tables: {
-      agendamentos: {
-        Row: {
-          barbeiro_id: string | null
-          cliente_id: string | null
-          created_at: string | null
-          data_agendamento: string
-          id: string
-          observacoes: string | null
-          servico_id: string | null
-          status: string | null
-          updated_at: string | null
-        }
-        Insert: {
-          barbeiro_id?: string | null
-          cliente_id?: string | null
-          created_at?: string | null
-          data_agendamento: string
-          id?: string
-          observacoes?: string | null
-          servico_id?: string | null
-          status?: string | null
-          updated_at?: string | null
-        }
-        Update: {
-          barbeiro_id?: string | null
-          cliente_id?: string | null
-          created_at?: string | null
-          data_agendamento?: string
-          id?: string
-          observacoes?: string | null
-          servico_id?: string | null
-          status?: string | null
-          updated_at?: string | null
-        }
-        Relationships: [
-          {
-            foreignKeyName: "agendamentos_barbeiro_id_fkey"
-            columns: ["barbeiro_id"]
-            isOneToOne: false
-            referencedRelation: "profiles"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "agendamentos_cliente_id_fkey"
-            columns: ["cliente_id"]
-            isOneToOne: false
-            referencedRelation: "profiles"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "agendamentos_servico_id_fkey"
-            columns: ["servico_id"]
-            isOneToOne: false
-            referencedRelation: "servicos"
-            referencedColumns: ["id"]
-          },
-        ]
-      }
-      clientes: {
-        Row: {
-          created_at: string
-          id: number
-        }
-        Insert: {
-          created_at: string
-          id?: number
-        }
-        Update: {
-          created_at?: string
-          id?: number
-        }
-        Relationships: []
-      }
-      configuracoes_barbearia: {
-        Row: {
-          created_at: string | null
-          dias_funcionamento: string[] | null
-          endereco: string | null
-          horario_funcionamento: Json | null
-          id: string
-          nome_barbearia: string
-          telefone: string | null
-          updated_at: string | null
-        }
-        Insert: {
-          created_at?: string | null
-          dias_funcionamento?: string[] | null
-          endereco?: string | null
-          horario_funcionamento?: Json | null
-          id?: string
-          nome_barbearia: string
-          telefone?: string | null
-          updated_at?: string | null
-        }
-        Update: {
-          created_at?: string | null
-          dias_funcionamento?: string[] | null
-          endereco?: string | null
-          horario_funcionamento?: Json | null
-          id?: string
-          nome_barbearia?: string
-          telefone?: string | null
-          updated_at?: string | null
-        }
-        Relationships: []
-      }
       profiles: {
         Row: {
           created_at: string | null
@@ -217,15 +111,7 @@ export type Database = {
           updated_at?: string | null
           valor?: number
         }
-        Relationships: [
-          {
-            foreignKeyName: "transacoes_agendamento_id_fkey"
-            columns: ["agendamento_id"]
-            isOneToOne: false
-            referencedRelation: "agendamentos"
-            referencedColumns: ["id"]
-          },
-        ]
+        Relationships: []
       }
     }
     Views: {
